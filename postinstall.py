@@ -12,25 +12,35 @@
 
 # Function to remove a RPM entry from TS.xml file
 
-def removeEntry(str):
+def removeEntry(rpmString):
     "This function removes the structure containing the RPM name"
 
-    print("\n The given string parameter is: %s \n" %str)
-
-# iterate over the file and as soon as you see 'str' in a line(say, index of the line is i),
+# iterate over the file and as soon as you see 'rpm' in a line(say, index of the line is i),
 # then add a set of numbers from i-1 to i+15 to a set
 
-    f = open('TS.txt')
+    rpms = [x.strip() for x in rpmString.split(',')]
+
+    # Declare a empty set
     se = set()
-    for i,x in enumerate(f):
-        if str in x:
-            se.update(range(i-1,i+15))
+
+    # Loop into each rpm package
+    for rpm in rpms:
+        print("\n rpm = %s" %rpm)
+
+        f = open('TS.txt')
+
+        for i,x in enumerate(f):
+            if rpm in x:
+                se.update(range(i-1,i+15))
     f.close()
 
-# Now iterate over the file again and skip those indexes that are present in that set
+    print("\n se = %s" %se)
 
+    # Now iterate over the file again and skip those indexes that are present in that set
     f = open('TS.txt')
-    f1 = open('out.txt', 'w')
+    f1 = open('out.txt', 'w+')
+    # write to the out.txt file all the entries from TS.txt file excluding the
+    # the entries corresponding to indices in se set
     for i,x in enumerate(f):
         if i not in se:
             f1.write(x)
@@ -39,4 +49,8 @@ def removeEntry(str):
 
 rpmString = raw_input("Enter the RPM to apply to TS.xml: ")
 print("\n %s" %removeEntry.__doc__)
+
+
+# Function call to removeEntry function
 removeEntry(rpmString)
+
