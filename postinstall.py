@@ -25,7 +25,7 @@ def removeEntry(rpmString):
 
     # Loop into each rpm package
     for rpm in rpms:
-        print("\n rpm = %s" %rpm)
+        #print("\n rpm = %s" %rpm)
 
         f = open('TS.txt')
 
@@ -34,7 +34,7 @@ def removeEntry(rpmString):
                 se.update(range(i-1,i+15))
     f.close()
 
-    print("\n se = %s" %se)
+    # print("\n se = %s" %se)
 
     # Now iterate over the file again and skip those indexes that are present in that set
     f = open('TS.txt')
@@ -47,10 +47,10 @@ def removeEntry(rpmString):
     f.close()
     f1.close()
 
-rpmString = raw_input("Enter the RPM to apply to TS.xml: ")
-print("\n %s" %removeEntry.__doc__)
+#rpmString = raw_input("Enter the RPM to apply to TS.xml: ")
+#print("\n %s" %removeEntry.__doc__)
 
 
 # Function call to removeEntry function
-removeEntry(rpmString)
+#removeEntry(rpmString)
 
