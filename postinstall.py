@@ -25,7 +25,7 @@ def removeEntry(rpmString):
 
     # Loop into each rpm package
     for rpm in rpms:
-        #print("\n rpm = %s" %rpm)
+        print("\n rpm name = %s" %rpm)
 
         f = open('TS.txt')
 
